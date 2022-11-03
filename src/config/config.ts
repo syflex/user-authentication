@@ -5,10 +5,10 @@ const MONGO_URL = process.env.MONGO_URI_REMOTE || '';
 const SERVER_PORT = process.env.SERVER_PORT ? Number(process.env.SERVER_PORT) : 3000;
 
 export const config = {
-    mongo: {
-        url: MONGO_URL
-    },
-    server: {
-        port: SERVER_PORT
-    }
+	mongo: {
+		url: MONGO_URL
+	},
+	server: {
+		port: SERVER_PORT
+	}
 };
