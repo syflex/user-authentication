@@ -1,0 +1,23 @@
+{
+  "name": "user-authentication",
+  "version": "1.0.0",
+  "description": "user authentication coding challeng",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/syflex/user-authentication.git"
+  },
+  "keywords": [
+    "user",
+    "authentication"
+  ],
+  "author": "Simon Moses Onazi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/syflex/user-authentication/issues"
+  },
+  "homepage": "https://github.com/syflex/user-authentication#readme"
+}
