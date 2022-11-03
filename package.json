@@ -1,7 +1,7 @@
 {
   "name": "user-authentication",
   "version": "1.0.0",
-  "description": "user authentication coding challeng",
+  "description": "user authentication coding challenge",
   "main": "index.js",
   "scripts": {
     "test": "jest"
