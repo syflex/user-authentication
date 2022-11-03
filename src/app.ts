@@ -1,11 +1,10 @@
 import express from 'express';
+import router from './route';
 const app = express();
 
+
 /** Routes */
-// create a GET route
-app.get('/', (req, res) => {
-	res.send('Hello World!');
-});
+app.use('/api/', router);
 
 
 app.use((_, res, next) => {
