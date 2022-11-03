@@ -9,6 +9,6 @@ describe('/', () => {
 
 	it('should return Hello world', async () => {
 		const response = await request(app).get('/');
-		expect(response.text).toBe('Hello world');
+		expect(response.text).toBe('Hello World!');
 	});
 });
