@@ -67,5 +67,13 @@ describe('Test user signup flow', () => {
 			const response = await request(app).patch('/user/update').send(updateData).set('Authorization', token);
 			expect(response.status).toBe(200);
 		});
+		it('should return 401', async () => {
+			const response = await request(app).patch('/user/update').send(updateData);
+			expect(response.status).toBe(401);
+		});
+		it('should return 500', async () => {
+			const response = await request(app).patch('/user/update').send({}).set('Authorization', token);
+			expect(response.status).toBe(500);
+		});
 	});
 });
