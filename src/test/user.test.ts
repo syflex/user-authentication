@@ -2,9 +2,15 @@ import request from 'supertest';
 import app from '../app';
 import { config } from '../config/config';
 import MongoConnection from '../utile/database';
+import * as faker from '@faker-js/faker';
 
 const mongoConnection = new MongoConnection(config.mongo.url);
 
+const userData = {
+	name: faker.faker.name.firstName(),
+	email: faker.faker.internet.email(),
+	password: faker.faker.internet.password()
+};
 
 describe('Test user signup flow', () => {
 	beforeAll(async () => {
@@ -25,9 +31,9 @@ describe('Test user signup flow', () => {
   
 	describe('POST /user/signup', () => {
 		const data = {
-			email: 'user1@gmail.com',
-			password: 'password',
-			name: 'user',
+			email: userData.email,
+			password: userData.password,
+			name: userData.name,
 		};
 		// Test to signup a new user.
 		it('should return 200', async () => {
@@ -48,8 +54,8 @@ describe('Test user signup flow', () => {
 
 	describe('POST /user/login', () => {
 		const data = {
-			email: 'user1@gmail.com',
-			password: 'password',
+			email: userData.email,
+			password: userData.password,
 		};
 		// Test to login with existing user.
 		it('should return 200', async () => {
@@ -65,14 +71,14 @@ describe('Test user signup flow', () => {
 		it('should return 404', async () => {
 			const response = await request(app).post('/api/user/login').send({
 				email: 'nonUser@gmail.com',
-				password: 'password',
+				password: userData.password,
 			});
 			expect(response.status).toBe(404);
 		});
 		// Test to login with wrong password.
 		it('should return 401', async () => {
 			const response = await request(app).post('/api/user/login').send({
-				email: 'user1@gmail.com',
+				email: userData.email,
 				password: 'wrongPassword',
 			});
 			expect(response.status).toBe(401);
@@ -83,12 +89,12 @@ describe('Test user signup flow', () => {
 		let token = '';
 		const wrongToken = 'wrongToken';
 		const loginData = {
-			email: 'user1@gmail.com',
-			password: 'password',
+			email: userData.email,
+			password: userData.password,
 		};
 		const updateData = {
-			name: 'user1',
-			password: 'password',
+			name: userData.name,
+			password: userData.password,
 		};
 		it('should return 200', async () => {
 			const response = await request(app).post('/api/user/login').send(loginData);

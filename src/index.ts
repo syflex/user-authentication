@@ -2,6 +2,8 @@ import http from 'http';
 import { config } from './config/config';
 import app from './app';
 import MongoConnection from './utile/database';
+import swaggerUi from 'swagger-ui-express';
+import { apiDocumentation } from './docs/apidoc';
 
 /** Connect to Mongo */
 const mongoConnection = new MongoConnection(config.mongo.url);
@@ -19,3 +21,8 @@ mongoConnection.connect(() => {
 const StartServer = () => {   
 	http.createServer(app).listen(config.server.port, () => console.info(`Server is running on port ${config.server.port}`));
 };
+
+
+
+// start swagger
+app.use('/documentation', swaggerUi.serve, swaggerUi.setup(apiDocumentation));

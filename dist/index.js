@@ -7,6 +7,8 @@ const http_1 = __importDefault(require("http"));
 const config_1 = require("./config/config");
 const app_1 = __importDefault(require("./app"));
 const database_1 = __importDefault(require("./utile/database"));
+const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
+const apidoc_1 = require("./docs/apidoc");
 /** Connect to Mongo */
 const mongoConnection = new database_1.default(config_1.config.mongo.url);
 if (config_1.config.mongo.url == null) {
@@ -21,3 +23,5 @@ mongoConnection.connect(() => {
 const StartServer = () => {
     http_1.default.createServer(app_1.default).listen(config_1.config.server.port, () => console.info(`Server is running on port ${config_1.config.server.port}`));
 };
+// start swagger
+app_1.default.use('/documentation', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(apidoc_1.apiDocumentation));
