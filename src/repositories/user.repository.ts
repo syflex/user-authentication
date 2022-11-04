@@ -44,6 +44,19 @@ class UserRepository {
 		  	expiresIn: this.min
 		});
 	}
+
+	// update user
+	public async updateUser (userData: CreateUserDto): Promise<IUser> {
+		const user = await this.users.findOne({ email: userData.email });
+		if (!user) {
+			throw new Error('User not found');
+		}
+		user.name = userData.name;
+		user.email = userData.email;
+		user.password = userData.password;
+		await user.save();
+		return user;
+	}
 }
 
 export default UserRepository;

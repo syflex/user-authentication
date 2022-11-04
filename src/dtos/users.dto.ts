@@ -25,4 +25,14 @@ export class LoginUserDto {
 	@IsString()
 	public password: string;
 }
+
+export class UpdateUserDto {
+	constructor () {
+		this.name = '';
+		this.password = '';
+	}
+
+	public name: string;
+  	public password: string;
+}
   

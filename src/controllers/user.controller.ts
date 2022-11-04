@@ -29,6 +29,19 @@ class UserController {
 		}
 	};
 
+	// update user
+	public updateUser = async (req: Request, res: Response, next: NextFunction) => {
+		const userEmail: string = req.params.args;
+		const userData: CreateUserDto = req.body;
+		try {
+			const updateUserData: IUser = await this.userService.updateUser(userEmail, userData);
+			res.status(200).send(updateUserData);
+		} catch (error: any) {
+			res.status(error.status).send((error));
+			next(error);
+		}
+	};
+
 }
 
 export default UserController;

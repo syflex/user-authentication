@@ -30,12 +30,26 @@ class UserService {
 		if (!user) {
 			throw new HttpException(400 ,'User not Already Exist');
 		}
-		
+
 		const token: TokenData = await this.userRepo.generateToken(userData.email);
 		if(!token) {
 			throw new HttpException(400 ,'User not found');
 		}
 		return token;
+	}
+
+	public async updateUser (userEmail: string, userData: CreateUserDto): Promise<IUser> {
+		const user = await this.userRepo.findUserByEmail(userEmail);
+		if (!user) {
+			throw new HttpException(400 ,'User not found');
+		}
+
+		const updateUser = await this.userRepo.createUser(userData);
+		if (!updateUser) {
+			throw new HttpException(400 ,'User not updated');
+		}
+			
+		return updateUser;
 	}
 }
 
