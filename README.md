@@ -25,6 +25,7 @@ A user authentication REST API where a user can register, login and update the a
   * [Installation](#installation)
   * [Usage](#usage)
   * [API Documentation](#api-documentation)
+  * [Perterns](#pertern used)
   * [License](#license)
   * Screenshots
   
@@ -70,10 +71,14 @@ $ yarn lint:fix
 ```
 
 ## API Documentation
-The API documentation is available withing the application at the following endpoint `{{base_url}}/documentation` or you can view it [here](https://www.getpostman.com/collections/f5f358fb75cdd42a039a)
+The API documentation is available withing the application at the following endpoint `{{base_url}}/documentation` or you can view it [here](https://documenter.getpostman.com/view/3671953/2s8YYCtQjk)
 
 To view the API documentation you need to have application running on your local machine. You can run the application by following the steps in the [Installation](#installation) section above.
 
+
+## Pertern used
+
+* [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller)
 
 ## License
 <details>
@@ -98,9 +103,12 @@ To view the API documentation you need to have application running on your local
   > Library.
   </details>
 
+## Screenshots
 
-
+### Test
 ![Tests](./images/tests.png)
-    
+
+### API Documentation
+![API Documentation](./images/api-doc.png)
 
   >Email: syflex360@gmail.com 
