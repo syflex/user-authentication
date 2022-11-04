@@ -13,7 +13,7 @@ class AuthRoute {
 
 	private initializeRoutes () {
 		this.router.post(`${this.path}/signup`, this.userController.signup);
-		this.router.post(`${this.path}/login`, this.userController.signing);
+		this.router.post(`${this.path}/login`, this.userController.login);
 	}
   
 }

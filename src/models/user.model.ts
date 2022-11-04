@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
+import { UserType } from '../types/user';
+import { hashSync, genSaltSync } from 'bcrypt';
 
-import { hashSync, genSaltSync, compareSync } from 'bcrypt';
-
-const userSchema = new mongoose.Schema(
+const userSchema = new mongoose.Schema<UserType>(
 	{
 		name: {
 			type: String,
@@ -19,7 +19,10 @@ const userSchema = new mongoose.Schema(
 			type: String,
 			required: true
 		},
-	}
+	},
+	{
+		timestamps: true,
+	},
 );
 
 userSchema.pre('save', function (next) {

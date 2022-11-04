@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { CreateUserDto, LoginUserDto } from '../dtos/users.dto';
 import { IUser } from '../interfaces/user.interface';
+import { TokenData } from '../interfaces/auth.interface';
 import UserService from '../services/user.service';
 
 class UserController {
@@ -9,9 +10,7 @@ class UserController {
 	public signup = async (req: Request, res: Response, next: NextFunction) => {
 		const userData: CreateUserDto = req.body;
 		try {
-			const signupData: IUser = await this.userService.createUser(
-				userData
-			);
+			const signupData: IUser = await this.userService.createUser(userData);
 			res.status(201).send(signupData);
 		} catch (error: any) {
 			res.status(500).send((error));
@@ -19,13 +18,11 @@ class UserController {
 		}
 	};
 
-	public signing = async (req: Request, res: Response, next: NextFunction) => {
+	public login = async (req: Request, res: Response, next: NextFunction) => {
 		const userData: LoginUserDto = req.body;
 		try {
-		  	const signingData: IUser = await this.userService.signing(
-				userData
-			);
-		  	res.status(200).send(signingData);
+		  	const token: TokenData = await this.userService.login(userData);
+		  	res.status(200).send(token);
 		} catch (error: any) {
 			res.status(error.status).send((error));
 			next(error);

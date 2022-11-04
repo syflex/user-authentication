@@ -16,7 +16,7 @@ export default (req: any, res: any, next: NextFunction) => {
 
 	const [scheme, token] = parts;
 	if (!/^Bearer$/i.test(scheme)) {
-		return res.status(401).send({ error: 'Token malformatted' });
+		return res.status(401).send({ error: 'Token malformation' });
 	}
   
 	jwt.verify(token, process.env.ACCESS_TOKEN_PRIVATE_KEY as string, (err: any, decoded: any) => {

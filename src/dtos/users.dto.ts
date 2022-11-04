@@ -7,13 +7,8 @@ export class CreateUserDto {
 		this.password = '';
 	}
 
-  	@IsString()
 	public name: string;
-
-  	@IsEmail()
   	public email: string;
-
-  	@IsString()
   	public password: string;
 }
 
