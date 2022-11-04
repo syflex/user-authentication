@@ -69,6 +69,11 @@ $ yarn lint:check
 $ yarn lint:fix
 ```
 
+## API Documentation
+The API documentation is available withing the application at the following endpoint `{{base_url}}/documentation` or you can view it [here](https://www.getpostman.com/collections/f5f358fb75cdd42a039a)
+
+To view the API documentation you need to have application running on your local machine. You can run the application by following the steps in the [Installation](#installation) section above.
+
 
 ## License
 <details>
