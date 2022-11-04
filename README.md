@@ -42,17 +42,17 @@ A user authentication REST API where a user can register, login and update the a
 ```bash
 # development
 $ yarn start
-
+```
 # watch mode
 $ yarn dev
-
+```
 
 ## Test
 
 ```bash
 # unit tests
 $ yarn test
-
+```
 
   ## License
   <details>
