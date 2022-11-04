@@ -78,7 +78,8 @@ $ yarn test
   </details>
 
 
- <!-- add image from images -->
-    <img src="images/tests.png" alt="README Generator" width="100%" height="auto">
+ <!-- display tests.png image from images folder -->
+![Tests](./images/tests.png)
+    
 
   >Email: syflex360@gmail.com 
