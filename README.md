@@ -78,6 +78,7 @@ $ yarn test
   </details>
 
 
-  ![test screenshot](https://github.com/syflex/user-authentication/images/test.png)
+ <!-- add image from images -->
+    <img src="images/tests.png" alt="README Generator" width="100%" height="auto">
 
   >Email: syflex360@gmail.com 
