@@ -1,4 +1,6 @@
 import express from 'express';
+import AuthRoute from './user.route';
+
 
 const router = express.Router();
 
@@ -42,6 +44,7 @@ router.use((req, res, next) => {
 	next();
 });
 
+router.use(new AuthRoute().router);
 
 router.get('/ping', (_, res) => res.send('pong'));
 
