@@ -1,11 +1,9 @@
 import { compareSync, genSaltSync, hashSync } from 'bcrypt';
-import { TokenData } from './../interfaces/auth.interface';
 import { IUser } from './../interfaces/user.interface';
 import User from '../models/user.model';
 import { CreateUserDto, LoginUserDto, UpdateUserDto } from '../dtos/users.dto';
 import { config } from '../config/config';
 import jwt from 'jsonwebtoken';
-import HttpException from '../utile/HttpException';
 
 class UserRepository {
 
