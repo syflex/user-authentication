@@ -56,15 +56,15 @@ describe('Test user signup flow', () => {
 			password: 'password',
 		};
 		it('should return 200', async () => {
-			const response = await request(app).post('/user/login').send(data);
+			const response = await request(app).post('/api/user/login').send(data);
 			expect(response.status).toBe(200);
 		});
 		it('should return 401', async () => {
-			const response = await request(app).post('/user/login').send({});
+			const response = await request(app).post('/api/user/login').send({});
 			expect(response.status).toBe(401);
 		});
 		it('should return 500', async () => {
-			const response = await request(app).post('/user/login').send({});
+			const response = await request(app).post('/api/user/login').send({});
 			expect(response.status).toBe(500);
 		});
 	});
@@ -80,20 +80,20 @@ describe('Test user signup flow', () => {
 			password: 'password1',
 		};
 		it('should return 200', async () => {
-			const response = await request(app).post('/user/login').send(loginData);
+			const response = await request(app).post('/api/user/login').send(loginData);
 			token = response.body.token;
 			expect(response.status).toBe(200);
 		});
 		it('should return 200', async () => {
-			const response = await request(app).patch('/user/update').send(updateData).set('Authorization', token);
+			const response = await request(app).patch('/api/user/update').send(updateData).set('Authorization', token);
 			expect(response.status).toBe(200);
 		});
 		it('should return 401', async () => {
-			const response = await request(app).patch('/user/update').send(updateData);
+			const response = await request(app).patch('/api/user/update').send(updateData);
 			expect(response.status).toBe(401);
 		});
 		it('should return 500', async () => {
-			const response = await request(app).patch('/user/update').send({}).set('Authorization', token);
+			const response = await request(app).patch('/api/user/update').send({}).set('Authorization', token);
 			expect(response.status).toBe(500);
 		});
 	});
