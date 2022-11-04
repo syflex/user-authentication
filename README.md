@@ -77,13 +77,4 @@ $ yarn test
   > Library.
   </details>
 
-  ## Contributing
-
-  Feel free to fork this repo and make it your own! If you think your changes could be widely used, submit a pull request! More info on how to do that can be found [here](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
-  
-  
-  ## Questions?
-
-  If you have any questions about the project you can reach out to me via email or GitHub with the information below. 
-
   >Email: syflex360@gmail.com 
