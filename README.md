@@ -1,4 +1,4 @@
-# README Generator  ![Project License Badge](https://img.shields.io/badge/license-GNU-brightgreen) ![Project Package Badge](https://img.shields.io/badge/package-Inquirer-informational) 
+# README Generator  ![Project License Badge](https://img.shields.io/badge/license-GNU-brightgreen) 
  
  <div align="center">
  
@@ -12,10 +12,13 @@ A user authentication REST API where a user can register, login and update the a
 
   ### Requirement: 
   
-  * JavaScript
-  * TypeScript
+  * [JavaScript](https://www.javascript.com/)
+  * [TypeScript](https://www.typescriptlang.org/)
   * [Node JS](https://nodejs.org/en/)
-  * [Inquirer](https://github.com/SBoudrias/Inquirer.js)
+  * [Express](https://expressjs.com/)
+  * [MongoDB](https://www.mongodb.com/)
+  * [Yarn](https://yarnpkg.com/)
+
 
   ## Table of Contents
 
@@ -78,7 +81,7 @@ $ yarn test
   </details>
 
 
- <!-- display tests.png image from images folder -->
+
 ![Tests](./images/tests.png)
     
 
