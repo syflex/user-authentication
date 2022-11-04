@@ -109,6 +109,6 @@ To view the API documentation you need to have application running on your local
 ![Tests](./images/tests.png)
 
 ### API Documentation
-![API Documentation](./images/api-doc.png)
+![API Documentation](./images/documentation.png)
 
   >Email: syflex360@gmail.com 
