@@ -8,21 +8,18 @@ export class CreateUserDto {
 	}
 
 	public name: string;
-  	public email: string;
-  	public password: string;
+	public email: string;
+	public password: string;
 }
 
 
 export class LoginUserDto {
 	constructor () {
-	  	this.email = '';
-	  	this.password = '';
+		this.email = '';
+		this.password = '';
 	}
   
-	@IsEmail()
 	public email: string;
-  
-	@IsString()
 	public password: string;
 }
 
@@ -33,6 +30,6 @@ export class UpdateUserDto {
 	}
 
 	public name: string;
-  	public password: string;
+	public password: string;
 }
   

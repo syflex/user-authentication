@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-undef
 module.exports = {
 	clearMocks: true,
 	moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],
@@ -8,5 +9,5 @@ module.exports = {
 	transform: {
 		'^.+\\.tsx?$': 'ts-jest'
 	},
-	testTimeout: 40000
+	testTimeout: 50000
 };

@@ -23,6 +23,7 @@ export default (req: any, res: any, next: NextFunction) => {
 		if (err) {
 			return res.status(401).send({ error: 'Token invalid' });
 		}
+		// eslint-disable-next-line no-cond-assign
 		if (req.params.args = decoded.args){ 
 			next();
 		}

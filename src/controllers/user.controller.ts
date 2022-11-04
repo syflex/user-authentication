@@ -3,6 +3,8 @@ import { CreateUserDto, LoginUserDto } from '../dtos/users.dto';
 import { IUser } from '../interfaces/user.interface';
 import { TokenData } from '../interfaces/auth.interface';
 import UserService from '../services/user.service';
+import { errorResponse, successResponse } from '../utile/ResponseBuilder';
+
 
 class UserController {
 	public userService = new UserService();
@@ -11,9 +13,9 @@ class UserController {
 		const userData: CreateUserDto = req.body;
 		try {
 			const signupData: IUser = await this.userService.createUser(userData);
-			res.status(201).send(signupData);
+			res.send(successResponse(signupData, 'User created successfully'));
 		} catch (error: any) {
-			res.status(500).send((error));
+			res.status(error.status).send(errorResponse(error));
 			next(error);
 		}
 	};
@@ -21,10 +23,10 @@ class UserController {
 	public login = async (req: Request, res: Response, next: NextFunction) => {
 		const userData: LoginUserDto = req.body;
 		try {
-		  	const token: TokenData = await this.userService.login(userData);
-		  	res.status(200).send(token);
+			const tokenData: TokenData = await this.userService.login(userData);
+			res.send(successResponse(tokenData, 'User logged in successfully'));
 		} catch (error: any) {
-			res.status(error.status).send((error));
+			res.status(error.status).send(errorResponse(error));
 			next(error);
 		}
 	};
