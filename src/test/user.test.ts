@@ -32,17 +32,13 @@ describe('Test user signup flow', () => {
 			name: 'user',
 		};
 
-		it.only('should return 201', async () => {
+		it('should return 201', async () => {
 			const response = await request(app).post('/api/user/signup').send(data);
 			expect(response.status).toBe(201);
 		});
 		it('should return 400', async () => {
-			const response = await request(app).post('/api/user/signup').send(data);
-			expect(response.status).toBe(400);
-		});
-		it('should return 401', async () => {
 			const response = await request(app).post('/api/user/signup').send({});
-			expect(response.status).toBe(401);
+			expect(response.status).toBe(400);
 		});
 		it('should return 500', async () => {
 			const response = await request(app).post('/api/user/signup').send({});

@@ -4,12 +4,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const route_1 = __importDefault(require("./route"));
 const app = (0, express_1.default)();
 /** Routes */
-// create a GET route
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
+app.use('/api/', route_1.default);
 app.use((_, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', 'https://koyo-product-upload.netlify.app/');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');

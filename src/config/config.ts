@@ -10,5 +10,9 @@ export const config = {
 	},
 	server: {
 		port: SERVER_PORT
+	},
+	jwt: {
+		secret: process.env.ACCESS_TOKEN_PRIVATE_KEY,
+		min: process.env.ACCESS_EXPIRES
 	}
 };
