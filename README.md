@@ -24,41 +24,54 @@ A user authentication REST API where a user can register, login and update the a
 
   * [Installation](#installation)
   * [Usage](#usage)
+  * [API Documentation](#api-documentation)
+  * [License](#license)
+  * Screenshots
   
   ***
 
-  ## Installation
+## Installation
 
-  To run this program simply clone the repo from GitHub using the following command, 
-  
-  ```
-  git clone https://github.com/syflex/user-authentication.git
-  ```
-  
-  You can then use the command `yarn` or `npm i` to download the projects npm dependencies. Currently, that is just Inquirer. Once you have done that you are all set! Now you can run the program with the command `yarn dev` or `npm run dev`.
+To run this program simply clone the repo from GitHub using the following command, 
 
-  ## Usage
+```
+git clone https://github.com/syflex/user-authentication.git
+```
+
+You can then use the command `yarn` or `npm i` to download the projects npm dependencies. Currently, that is just Inquirer. Once you have done that you are all set! Now you can run the program with the command `yarn dev` or `npm run dev`.
+
+## Usage
 
 
-## Running the app
+### Running the app
 
+#### Development
 ```bash
-# development
 $ yarn start
 ```
-# watch mode
+#### watch mode
+```bash
 $ yarn dev
 ```
 
-## Test
-
+#### unit tests
 ```bash
-# unit tests
 $ yarn test
 ```
 
-  ## License
-  <details>
+#### lint checks
+```bash
+$ yarn lint:check
+```
+
+#### lint fix
+```bash
+$ yarn lint:fix
+```
+
+
+## License
+<details>
   
   
   <summary>GNU LESSER GENERAL PUBLIC LICENSE</summary>
