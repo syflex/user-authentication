@@ -1,4 +1,4 @@
-import { IsEmail, IsString, isNotEmpty } from 'class-validator';
+import { IsEmail, IsString } from 'class-validator';
 
 export class CreateUserDto {
 	constructor () {
@@ -6,9 +6,11 @@ export class CreateUserDto {
 		this.email = '';
 		this.password = '';
 	}
-
+	@IsString()
 	public name: string;
+	@IsEmail()
 	public email: string;
+	@IsString()
 	public password: string;
 }
 
@@ -18,8 +20,9 @@ export class LoginUserDto {
 		this.email = '';
 		this.password = '';
 	}
-  
+	@IsEmail()
 	public email: string;
+	@IsString()
 	public password: string;
 }
 
@@ -28,8 +31,9 @@ export class UpdateUserDto {
 		this.name = '';
 		this.password = '';
 	}
-
+	@IsString()
 	public name: string;
+	@IsString()
 	public password: string;
 }
   
