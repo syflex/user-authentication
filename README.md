@@ -25,7 +25,7 @@ A user authentication REST API where a user can register, login and update the a
   * [Installation](#installation)
   * [Usage](#usage)
   * [API Documentation](#api-documentation)
-  * [Perterns](#pertern used)
+  * [Pattern](#pattern used)
   * [License](#license)
   * [Nice to have](#nice-to-have)
   * [Screenshots](#screenshots)
@@ -81,10 +81,21 @@ The API documentation is available withing the application at the following endp
 To view the API documentation you need to have application running on your local machine. You can run the application by following the steps in the [Installation](#installation) section above.
 
 
-## Pertern used
+## Pattern used
 
 * [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller)
+  MVC is a software design pattern that separates an application into three main logical components: the model, the view, and the controller. we eliminate view as we are only creating API's. Each of these components are built to handle specific development aspects of an application.
 
+  The following structure rules:
+  Rule 1: Arrange files around features.
+  Rule 3: Place test in a separate folder for easy access.
+  Rule 4: Place scripts and utility in a utile folder. :wink: :wink: can we done better hahaha
+  Rule 5: service layer is use for business logic.
+  Rule 6: controller layer is use for request and response.
+  Rule 7: model layer is use for database schema.
+  Rule 8: repository layer is use for database query.
+
+  
 ## License
 <details>
   
