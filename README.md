@@ -39,9 +39,30 @@ To run this program simply clone the repo from GitHub using the following comman
 ```
 git clone https://github.com/syflex/user-authentication.git
 ```
+  
+  Then install the required dependencies using the following command,
+  
+  ```
+  yarn install
+  ```
+  
+Then compile the TypeScript code using the following command,
+  
+  ```
+  yarn build
+  ```
+  
 
+  Then run the program using the following command,
 
-## Usage
+  ```
+  yarn start
+  ```
+  or 
+  ```
+  yarn dev
+  ```
+
 ### Running the app
 
 To run the app, you need to first build the app with `npx tsc` or `npx tsc --watch` then can use the command `yarn dev` or `npm run dev` in the terminal. This will start the server and you can then use the API endpoints to interact with the app.
