@@ -5,6 +5,7 @@ import User from '../models/user.model';
 import { CreateUserDto, LoginUserDto, UpdateUserDto } from '../dtos/users.dto';
 import { config } from '../config/config';
 import jwt from 'jsonwebtoken';
+import HttpException from '../utile/HttpException';
 
 class UserRepository {
 
@@ -18,20 +19,26 @@ class UserRepository {
 		this.min = (config.jwt.min) || '265d' as string;
 	}
 
-	public async createUser(userData: CreateUserDto): Promise<any> {
+	public async createUser(userData: CreateUserDto): Promise<IUser> {
 		const user = await this.user.create(userData);
-		return user!;
+		return user;
 	}
 
 	// find user by email
 	public async findUserByEmail (email: string): Promise<IUser> {
 		const user = await this.user.findOne({ email });
-		return user!;
+		if (!user) {
+			throw new HttpException(401, 'User not found');
+		}
+		return user;
 	}
 
 	public async login(userData: LoginUserDto): Promise<IUser> {
 		const user = await this.user.findOne({ email: userData.email });
-		return user!;
+		if (!user) {
+			throw new HttpException(401, 'User not found');
+		}
+		return user;
 	}
 
 	// verify password

@@ -35,7 +35,7 @@ class UserController {
 	// update user
 	public updateUser = async (req: Request, res: Response, next: NextFunction) => {
 		const userEmail: string = req.params.email;
-		const userData = req.body;
+		const userData: UpdateUserDto = req.body;
 		try {
 			const updateUserData: IUser = await this.userService.updateUser(userEmail, userData);
 			res.send(successResponse(updateUserData, 'User updated successfully'));
