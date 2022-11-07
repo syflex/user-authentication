@@ -5,12 +5,21 @@ export class CustomError extends Error {
 	statusCode!: number;
 }
 export class ApiResponse {
-	data:  any;
-	message!: any;
-	status: any;
+	constructor () {
+		this.message = '';
+		this.data = {};
+		this.status = '';
+	}
+	data:  object;
+	message!: string | null;
+	status: string;
 }
 
 export class ApiResponseErr {
-	data: any;
+	constructor () {
+		this.message = '';
+		this.data = {};
+	}
+	data: object;
 	message!: string;
 }

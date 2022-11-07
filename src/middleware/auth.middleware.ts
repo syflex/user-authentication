@@ -1,10 +1,10 @@
 // JWT authention middleware
-import { NextFunction } from 'express';
+import { Request, Response, NextFunction } from 'express';
 import jwt, { Secret } from 'jsonwebtoken';
 import { config } from '../config/config';
 
 
-export default (req: any, res: any, next: NextFunction) => {
+export default (req: Request, res: Response, next: NextFunction) => {
 	const authHeader = req.headers.authorization;
 	if (!authHeader) {
 		return res.status(401).send({ error: 'No token provided' });
@@ -21,11 +21,13 @@ export default (req: any, res: any, next: NextFunction) => {
 	}
 	
 	const secret = config.jwt.secret;
-	jwt.verify(token, secret as Secret, (err: any, decoded: any) => {
+	jwt.verify(token, secret as Secret, (err, decoded) => {
 		if (err) {
 			return res.status(401).send({ error: 'Token invalid' });
 		}
-		
+		if(typeof decoded !== 'object') {
+			return res.status(401).send({ error: 'Token invalid' });
+		}
 		req.params.email = decoded.email;
 		next();
 	});

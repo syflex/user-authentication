@@ -21,23 +21,19 @@ class UserRepository {
 
 	public async createUser(userData: CreateUserDto): Promise<IUser> {
 		const user = await this.user.create(userData);
+		if(!user) throw new HttpException(500, 'Something went wrong');
 		return user;
 	}
 
 	// find user by email
 	public async findUserByEmail (email: string): Promise<IUser> {
 		const user = await this.user.findOne({ email });
-		if (!user) {
-			throw new HttpException(401, 'User not found');
-		}
-		return user;
+		return user!;
 	}
 
 	public async login(userData: LoginUserDto): Promise<IUser> {
 		const user = await this.user.findOne({ email: userData.email });
-		if (!user) {
-			throw new HttpException(401, 'User not found');
-		}
+		if(!user) throw new HttpException(401, 'User not found');
 		return user;
 	}
 
@@ -65,7 +61,8 @@ class UserRepository {
 				password: hashedPassword
 			}, 
 			{ new: true });
-		return user!;
+		if(!user) throw new HttpException(401, 'User not found');
+		return user;
 	}
 }
 
