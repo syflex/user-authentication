@@ -1,9 +1,9 @@
 import { CustomError, ApiResponse, ApiResponseErr } from '../types/General';
 
-export const successResponse = (data: any, message = 'Response received for this request...!'): ApiResponse => ({
+export const successResponse = (data: object, message = 'Response received for this request...!'): ApiResponse => ({
 	status: 'success',
 	data,
-	message: null
+	message: message || null,
 });
 
 /**
