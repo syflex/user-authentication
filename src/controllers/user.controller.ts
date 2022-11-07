@@ -1,3 +1,4 @@
+import { UpdateUserDto } from './../dtos/users.dto';
 import { Request, Response, NextFunction } from 'express';
 import { CreateUserDto, LoginUserDto } from '../dtos/users.dto';
 import { IUser } from '../interfaces/user.interface';
@@ -33,13 +34,13 @@ class UserController {
 
 	// update user
 	public updateUser = async (req: Request, res: Response, next: NextFunction) => {
-		const userEmail: string = req.params.args;
-		const userData: CreateUserDto = req.body;
+		const userEmail: string = req.params.email;
+		const userData = req.body;
 		try {
 			const updateUserData: IUser = await this.userService.updateUser(userEmail, userData);
-			res.status(200).send(updateUserData);
+			res.send(successResponse(updateUserData, 'User updated successfully'));
 		} catch (error: any) {
-			res.status(error.status).send((error));
+			res.status(error.status).send(errorResponse(error));
 			next(error);
 		}
 	};

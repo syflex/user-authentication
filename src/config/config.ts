@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 
 dotenv.config();
-const MONGO_URL = process.env.MONGO_URI_REMOTE || '';
+const MONGO_URL = process.env.MONGO_URI || '';
 const SERVER_PORT = process.env.SERVER_PORT ? Number(process.env.SERVER_PORT) : 3000;
 
 export const config = {

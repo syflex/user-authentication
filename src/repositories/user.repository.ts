@@ -1,6 +1,6 @@
+import { TokenData } from './../interfaces/auth.interface';
 import { compareSync, genSaltSync, hashSync } from 'bcrypt';
 import { IUser } from './../interfaces/user.interface';
-import { TokenData } from './../interfaces/auth.interface';
 import User from '../models/user.model';
 import { CreateUserDto, LoginUserDto, UpdateUserDto } from '../dtos/users.dto';
 import { config } from '../config/config';
@@ -41,11 +41,10 @@ class UserRepository {
 	}
 
 	public async generateToken (args: string): Promise<TokenData> {
-		const token: TokenData = {
+		return {
 			token: jwt.sign({ email: args }, this.secret, { expiresIn: this.min }),
-			expiresIn : this.min
+			expiresIn: this.min
 		};
-		return token;
 	}
 
 	// update user

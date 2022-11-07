@@ -27,6 +27,7 @@ A user authentication REST API where a user can register, login and update the a
   * [API Documentation](#api-documentation)
   * [Perterns](#pertern used)
   * [License](#license)
+  * [Nice to have](#nice-to-have)
   * [Screenshots](#screenshots)
   
   ***
@@ -106,6 +107,13 @@ To view the API documentation you need to have application running on your local
   > 
   > Library.
   </details>
+
+
+## Nice to have
+* [ ] Add a frontend to the application
+* [ ] Websocket integration
+* [ ] Both unit and integration tests
+* [ ] Enforce dto validation with class-validator automatically
 
 ## Screenshots
 
