@@ -45,13 +45,20 @@ git clone https://github.com/syflex/user-authentication.git
   ```
   yarn install
   ```
+  or 
+  ```
+  npm install
+  ```
   
-Then compile the TypeScript code using the following command,
+  Then compile the TypeScript code using the following command,
   
   ```
   yarn build
   ```
-  
+  or 
+  ```
+  npm run build
+  ```
 
   Then run the program using the following command,
 
@@ -108,13 +115,14 @@ To view the API documentation you need to have application running on your local
   MVC is a software design pattern that separates an application into three main logical components: the model, the view, and the controller. we eliminate view as we are only creating API's. Each of these components are built to handle specific development aspects of an application.
 
   The following structure rules:
-  Rule 1: Arrange files around features.
-  Rule 3: Place test in a separate folder for easy access.
-  Rule 4: Place scripts and utility in a utile folder. :wink: :wink: can we done better hahaha
-  Rule 5: service layer is use for business logic.
-  Rule 6: controller layer is use for request and response.
-  Rule 7: model layer is use for database schema.
-  Rule 8: repository layer is use for database query.
+  * Rule 1: Arrange files around features.
+  * Rule 3: Place test in a separate folder for easy access.
+  * Rule 4: Place scripts and utility in a utile folder. :wink: :wink: can we done better hahaha
+  * Rule 5: service layer is use for business logic.
+  * Rule 6: controller layer is use for request and response.
+  * Rule 7: model layer is use for database schema.
+  * Rule 8: repository layer is use for database query.
+  * Rule 9: linting is use for code quality.
 
   
 ## License
