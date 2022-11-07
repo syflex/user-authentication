@@ -26,28 +26,8 @@ export default (req: any, res: any, next: NextFunction) => {
 			return res.status(401).send({ error: 'Token invalid' });
 		}
 		
-		// eslint-disable-next-line no-cond-assign
-		if (req.params.email = decoded.email){ 
-			next();
-		}
+		req.params.email = decoded.email;
+		next();
 	});
-
-	
-
-	// const verifyToken: JwtPayload | string = jwt.verify(token, secret as Secret);
-	// if(!verifyToken){
-	// 	return res.status(401).send({ error: 'Token invalid' });
-	// }
-
-	// console.log(verifyToken);
-	// req.params.args = verifyToken.email
-	
-	
-	// next();
-	// console.log(verifyToken);
-	
-
-	// token: jwt.sign({ email: args }, this.secret, { expiresIn: this.min }),
-	// 		expiresIn: this.min
 };
 
