@@ -1,6 +1,6 @@
 // JWT authention middleware
 import { NextFunction } from 'express';
-import jwt, { JwtPayload, Secret } from 'jsonwebtoken';
+import jwt, { Secret } from 'jsonwebtoken';
 import { config } from '../config/config';
 
 
