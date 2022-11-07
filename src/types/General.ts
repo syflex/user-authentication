@@ -1,8 +1,9 @@
 export class CustomError extends Error {
-	/**
-     * Represents the statuscode of the error response
-     */
-	statusCode!: number;
+	constructor () {
+		super();
+		this.statusCode = 500;
+	}
+	statusCode: number;
 }
 export class ApiResponse {
 	constructor () {

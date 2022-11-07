@@ -4,6 +4,7 @@ import { CreateUserDto, LoginUserDto } from '../dtos/users.dto';
 import { IUser } from '../interfaces/user.interface';
 import { TokenData } from '../interfaces/auth.interface';
 import UserService from '../services/user.service';
+import { CustomError } from '../types/General';
 import { errorResponse, successResponse } from '../utile/ResponseBuilder';
 
 
@@ -15,8 +16,10 @@ class UserController {
 		try {
 			const signupData: IUser = await this.userService.createUser(userData);
 			res.send(successResponse(signupData, 'User created successfully'));
-		} catch (error: any) {
-			res.status(error.status).send(errorResponse(error));
+		} catch (error: unknown) {
+			if(error instanceof CustomError) {
+				res.status(error.statusCode).send(errorResponse(error));
+			}
 			next(error);
 		}
 	};
@@ -26,8 +29,10 @@ class UserController {
 		try {
 			const tokenData: TokenData = await this.userService.login(userData);
 			res.send(successResponse(tokenData, 'User logged in successfully'));
-		} catch (error: any) {
-			res.status(error.status).send(errorResponse(error));
+		} catch (error: unknown) {
+			if(error instanceof CustomError) {
+				res.status(error.statusCode).send(errorResponse(error));
+			}
 			next(error);
 		}
 	};
@@ -39,8 +44,10 @@ class UserController {
 		try {
 			const updateUserData: IUser = await this.userService.updateUser(userEmail, userData);
 			res.send(successResponse(updateUserData, 'User updated successfully'));
-		} catch (error: any) {
-			res.status(error.status).send(errorResponse(error));
+		} catch (error: unknown) {
+			if(error instanceof CustomError) {
+				res.status(error.statusCode).send(errorResponse(error));
+			}
 			next(error);
 		}
 	};
