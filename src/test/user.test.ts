@@ -7,9 +7,9 @@ import * as faker from '@faker-js/faker';
 const mongoConnection = new MongoConnection(config.mongo.url);
 
 const userData = {
-	name: faker.faker.name.firstName(),
+	name: `${faker.faker.name.firstName()} ${faker.faker.name.lastName()}`,
 	email: faker.faker.internet.email(),
-	password: faker.faker.internet.password()
+	password: faker.faker.internet.password(),
 };
 
 describe('Test user signup flow', () => {
@@ -35,6 +35,8 @@ describe('Test user signup flow', () => {
 			password: userData.password,
 			name: userData.name,
 		};
+		console.log('user deatils',data);
+		
 		// Test to signup a new user.
 		it('should return 200', async () => {
 			const response = await request(app).post('/api/user/signup').send(data);
@@ -61,6 +63,8 @@ describe('Test user signup flow', () => {
 		it('should return 200', async () => {
 			const response = await request(app).post('/api/user/login').send(data);
 			expect(response.status).toBe(200);
+			expect(response.body.data).toHaveProperty('token');
+			expect(response.body.data).toHaveProperty('expiresIn');
 		});
 		// Test to login with non-existing data.
 		it('should return 400', async () => {
@@ -93,16 +97,13 @@ describe('Test user signup flow', () => {
 			password: userData.password,
 		};
 		const updateData = {
-			name: userData.name,
-			password: userData.password,
+			name: faker.faker.name.firstName(),
+			password: faker.faker.internet.password(),
 		};
 		it('should return 200', async () => {
-			const response = await request(app).post('/api/user/login').send(loginData);
-			token = response.body.data;
-			expect(response.status).toBe(200);
-		});
-		it('should return 200', async () => {
-			const response = await request(app).patch('/api/user/update').send(updateData).set('Authorization', `Bearer ${token}`);
+			const login_response = await request(app).post('/api/user/login').send(loginData);
+			token = login_response.body.data.token;
+			const response = await request(app).patch('/api/user/update/').send(updateData).set('Authorization', `Bearer ${token}`);
 			expect(response.status).toBe(200);
 		});
 		it('should return 401', async () => {
@@ -110,7 +111,7 @@ describe('Test user signup flow', () => {
 			expect(response.status).toBe(401);
 		});
 		it('should return 400', async () => {
-			const response = await request(app).patch('/api/user/update').send({}).set('Authorization', `Bearer ${token}`);
+			const response = await request(app).patch('/api/user/update/').send({}).set('Authorization', `Bearer ${token}`);
 			expect(response.status).toBe(400);
 		});
 	});

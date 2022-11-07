@@ -1,6 +1,7 @@
 // JWT authention middleware
 import { NextFunction } from 'express';
-import jwt from 'jsonwebtoken';
+import jwt, { JwtPayload, Secret } from 'jsonwebtoken';
+import { config } from '../config/config';
 
 
 export default (req: any, res: any, next: NextFunction) => {
@@ -18,15 +19,35 @@ export default (req: any, res: any, next: NextFunction) => {
 	if (!/^Bearer$/i.test(scheme)) {
 		return res.status(401).send({ error: 'Token malformation' });
 	}
-  
-	jwt.verify(token, process.env.ACCESS_TOKEN_PRIVATE_KEY as string, (err: any, decoded: any) => {
+	
+	const secret = config.jwt.secret;
+	jwt.verify(token, secret as Secret, (err: any, decoded: any) => {
 		if (err) {
 			return res.status(401).send({ error: 'Token invalid' });
 		}
+		
 		// eslint-disable-next-line no-cond-assign
-		if (req.params.args = decoded.args){ 
+		if (req.params.email = decoded.email){ 
 			next();
 		}
 	});
+
+	
+
+	// const verifyToken: JwtPayload | string = jwt.verify(token, secret as Secret);
+	// if(!verifyToken){
+	// 	return res.status(401).send({ error: 'Token invalid' });
+	// }
+
+	// console.log(verifyToken);
+	// req.params.args = verifyToken.email
+	
+	
+	// next();
+	// console.log(verifyToken);
+	
+
+	// token: jwt.sign({ email: args }, this.secret, { expiresIn: this.min }),
+	// 		expiresIn: this.min
 };
 

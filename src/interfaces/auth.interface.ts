@@ -4,7 +4,7 @@ import { IUser } from '../interfaces/user.interface';
 
 export interface TokenData {
   token: string;
-  expiresIn: number;
+  expiresIn: string;
 }
 
 export interface RequestWithUser extends Request {
